@@ -16,19 +16,23 @@ const bookData = reactive({
 const mode = ref("create");
 const bookIndex = ref(-1);
 
+//ทำการดึง id มาก่อน
+//ดึงข้อมูล book ออกมา
+//เอาข้อมูลมาใส่ form ตัวเดิม
+//เปลี่ยนจาก add เป็น update book
 onMounted(() => {
   if (route.name === "book-edit") {
     mode.value = "update";
-    bookIndex.value = parseInt(route.params.id);
-    const cBookStore = bookStore.books[bookIndex.value];
-    bookData.name = cBookStore.name;
+    bookIndex.value = parseInt(route.params.id); //รับ params มาก่อนเอาเก็บเข้าไปใน bookIndex
+    const cBookStore = bookStore.books[bookIndex.value]; //ดึงข้อมูลเก่าของ bookstore ออกมาของ bookIndex
+    bookData.name = cBookStore.name; //เอาข้อมูลมาใส่ form ตัวเดิม
     bookData.author = cBookStore.author;
   }
 });
 
 const addBook = () => {
   if (mode.value === "update") {
-    bookStore.editBook(bookData, bookIndex.value);
+    bookStore.editBook(bookData, bookIndex.value); //เอาข้อมูลจาก reactive มา update editBook อีกทีนึง
   } else {
     bookStore.addBook(bookData);
   }

@@ -17,7 +17,7 @@ export const useBookStore = defineStore("book", {
       this.books.splice(bookIndex, 1);
     },
     editBook(bookData, bookIndex) {
-      this.books.splice(bookIndex, 1, bookData);
+      this.books.splice(bookIndex, 1, bookData); //splice สามารถ update ค่าใน array ได้โดยใส่ parameter ตำแหน่งที่ 3 เข้าไปเพื่อ update
     },
   },
 });

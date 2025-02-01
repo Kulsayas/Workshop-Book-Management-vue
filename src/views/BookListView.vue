@@ -11,7 +11,7 @@ const bookStore = useBookStore();
     <RouterLink :to="{ name: 'book-create' }">Create book</RouterLink>
     <ul>
       <li v-for="(book, index) in bookStore.books">
-        {{ index }} {{ book.name }} , {{ book.author }}
+        {{ book.name }} , {{ book.author }}
         <RouterLink :to="{ name: 'book-edit', params: { id: index } }">
           <button>Edit</button>
         </RouterLink>
